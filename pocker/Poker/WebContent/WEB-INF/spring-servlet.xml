@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:lang="http://www.springframework.org/schema/lang"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+	http://www.springframework.org/schema/aop 
+	http://www.springframework.org/schema/aop/spring-aop.xsd 
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+	http://www.springframework.org/schema/jee 
+	http://www.springframework.org/schema/jee/spring-jee.xsd 
+	http://www.springframework.org/schema/lang 
+	http://www.springframework.org/schema/lang/spring-lang.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd 
+	http://www.springframework.org/schema/util 
+	http://www.springframework.org/schema/util/spring-util.xsd 
+	http://www.springframework.org/schema/data/mongo 
+	http://www.springframework.org/schema/data/mongo/spring-mongo.xsd
+	http://www.springframework.org/schema/data/repository
+    http://www.springframework.org/schema/data/repository/spring-repository-1.5.xsd"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns="http://www.springframework.org/schema/beans">
+	
+	
+	<context:annotation-config />
+			
+	<context:component-scan base-package="com.game.controller" />
+	<context:component-scan base-package="com.game.impl" />
+	<context:component-scan base-package="com.game.impl.dao" />
+	<context:component-scan base-package="com.game.domain" />
+	<context:component-scan base-package="com.game.*" />
+	<context:component-scan base-package="com.game.impl.dao.*" />
+	<context:component-scan base-package="com.google.gson.Gson" />
+
+	<bean
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		id="multipartResolver" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property value="/WEB-INF/jsp/" name="prefix" />
+		<property value=".jsp" name="suffix" />
+	</bean>
+	
+
+  <mongo:db-factory id="mongoDbFactory"
+                  host="localhost"
+                  port="27017"
+                  dbname="game"
+                  password=""/>
+                  
+    <bean id="mongo" name="mongo" class="org.springframework.data.mongodb.core.MongoFactoryBean"></bean>                     
+
+    <bean id="gson" name="gson" class="com.google.gson.Gson"></bean>
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property value="0" name="cacheSeconds" />
+	</bean>
+
+
+	
+</beans>

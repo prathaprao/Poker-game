@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="rollingFileApp" class="org.apache.log4j.FileAppender">
+	    <param name="file" value="C://Users//chenn//Desktop//pocker.txt"/>
+	    <param name="MaxFileSize" value="200MB"/>
+	    <!-- Keep one backup file -->
+	    <param name="MaxBackupIndex" value="10"/>
+	    <layout class="org.apache.log4j.PatternLayout">
+	      <param name="ConversionPattern" value="%d{dd MMM yyyy HH:mm:ss,SSS} - %m%n" />
+	    </layout>
+  	</appender>
+  	
+  	<!-- Application Loggers -->
+
+  	<logger name="com.game.controller">
+  	   <level value="INFO"/>
+  	</logger>
+  	
+ 	<logger name="com.game.impl">
+  	   <level value="INFO"/>
+  	</logger>
+
+  	<logger name="com.game.impl.service">
+  	   <level value="INFO"/>
+  	</logger>
+
+  	<logger name="com.game.cache">
+  	   <level value="INFO"/>
+  	</logger>
+
+
+  	<!--  3rd Party Loggers -->
+  	<logger name="org.springframework.core">
+  	   <level value="ERROR"/>
+  	</logger>
+  	
+  	<logger name="org.springframework.beans">
+  	   <level value="ERROR"/>
+  	</logger>
+
+  	<logger name="org.springframework.context">
+  	   <level value="debug"/>
+  	</logger>
+
+  	<logger name="org.springframework">
+  	   <level value="ERROR"/>
+  	</logger>
+
+  	<logger name="nf.sf.ehcache">
+  	   <level value="ERROR"/>
+  	</logger>
+
+  	<logger name="org.mongodb.driver.cluster">
+  	   <level value="ERROR"/>
+  	</logger>
+
+
+  		<!-- Root Logger -->
+	<root>
+		<priority value="info" />
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFileApp" />
+	</root>
+
+</log4j:configuration>
+  	
